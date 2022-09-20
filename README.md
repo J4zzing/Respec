@@ -22,9 +22,11 @@ Note: Permanent bonus points from perks will be preserve. e.g. vigorous smith, f
 
 ### ARGUMENTS
 [attribute name] - Use the names in the ouput of `respec.show_all_attributes` to refer attributes, case insensetive.  
+
 [skill name] - Use the names in the ouput of `respec.show_all_skills` to refer skills, case insensetive.  
-[hero name] - Optional. If omitted, commands applies to the player by default.  
-Use the names in the output of `respec.heroes` to refer heroes, specify name with underscores or spaces. Only heroes of player clan/family is acceptable.  
+
+[hero name] - Optional. If omitted, commands applies to the player by default. Use the names in the output of `respec.heroes` to refer heroes, specify name with underscores or spaces.  
+Only heroes of player clan/family is acceptable. Dead heroes and children are fobidden since you can not use the in-game UI to spec them.   
 Note: Seems like non-english characters in Console can not display correctlly. If you are using a non-english language, use \"localization.change_language english\" then repec.You can also use the in-game option to change language, after you make changes, use the in-game option to change it back.  
 
 ### EXAMPLES
@@ -41,12 +43,13 @@ You can use initial letters of a hero/attribute/skill name ONLY if there is no a
 
 ### Commands only availiable in DEBUG version
 Following commands are not in a "respective" sense. these may helps some special scenarios or for testing purpose. Some commands may have unexpected results.  
+
 `respec.skill [skill name] [hero name]`  
 `respec.all_skills [hero name]`  
-Reset skill level, xp and focus points to zero, perks will be reset after the save is reloaded.  
-visit the tournament master beforehand if this quirky behavior is unwated.  
+Reset skill level, xp and focus points to zero, perks will be reset after the save is reloaded. Visit the tournament master beforehand if this quirky behavior is unwated.  
 You can use `respec.show_learnt_perks_for_skill` to check whether the perks match the skill level.  
 Permanent bonuses of perks, which permanently add attribute or focus point(e.g. vigorous smith), will be removed only if there are points left to remove.  
+
 `respec.set_skill [skill name] [skill level] [hero name]`  
 Set skill to a specified level, perks will be reset after save is reload, permanent bonuses of perks WILL NOT be removed.  
 `respec.show_xp`  
