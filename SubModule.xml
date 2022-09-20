@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value = "Respec in console"/>
+	<Id value = "MBRespec"/>
+	<Version value = "v1.1.0.0"/>
+	<SingleplayerModule value="true"/>
+	<MultiplayerModule value="false"/>
+	<Official value ="false" />
+	<DependedModules>
+		<DependedModule Id="Native" DependentVersion="e1.8.0"/>
+		<DependedModule Id="SandBoxCore" DependentVersion="e1.8.0"/>
+		<DependedModule Id="Sandbox" DependentVersion="e1.8.0"/>
+		<DependedModule Id="CustomBattle" DependentVersion="e1.8.0"/>
+		<DependedModule Id="StoryMode" DependentVersion="e1.8.0"/>
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value = "MBRespec"/>
+			<DLLName value = "MBRespec.dll"/>
+			<SubModuleClassType value = "MBRespec.SubModule"/>
+			<Tags>
+				<Tag key="DedicatedServerType" value ="none" />
+				<Tag key="IsNoRenderModeElement" value ="false" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls/>
+</Module>
