@@ -48,5 +48,5 @@ visit the tournament master beforehand if this quirky behavior is unwated.
 You can use `respec.show_learnt_perks_for_skill` to check whether the perks match the skill level.  
 Permanent bonuses of perks, which permanently add attribute or focus point(e.g. vigorous smith), will be removed only if there are points left to remove.  
 `respec.set_skill [skill name] [skill level] [hero name]`  
-Set skill to a specified level, perks will be reset after save is reload, permanent bonuses of perks WILL NOT be removed.
-`respec.show_xp`
+Set skill to a specified level, perks will be reset after save is reload, permanent bonuses of perks WILL NOT be removed.  
+`respec.show_xp`  
