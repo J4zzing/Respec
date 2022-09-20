@@ -31,39 +31,6 @@ namespace MBRespec {
             return Respec.ShowPlayerClanHeroes();
         }
 
-        [CommandLineFunctionality.CommandLineArgumentFunction("show_learnt_perks_for_skill", "respec")]
-        public static string slpfs(List<string> args) => CommandWrapper(ShowLearntPerksForSkill, 1)(args);
-        // public static CommandLineFunction slpfs = CommandWrapper(ShowPerksForSkill, 1);
-        public static string ShowLearntPerksForSkill(List<string> arguments)
-        {
-            var hero = GetHeroFromCommandLineArguments(arguments, 1);
-            var skill = GetSkillByName(arguments[0]);
-            return Respec.ShowLearntPerksForSkill(hero, skill);
-        }
-
-        [CommandLineFunctionality.CommandLineArgumentFunction("show_xp", "respec")]
-        public static string _xp(List<string> args) => CommandWrapper(Xp)(args);
-        public static string Xp(List<string> arguments)
-        {
-            Hero hero = GetHeroFromCommandLineArguments(arguments, 0);
-
-            var heroD = hero.HeroDeveloper as PropertyOwnerF<PropertyObject>;
-            var skillXp = Skills.All.Sum(skill => heroD.GetPropertyValue(skill));
-
-            var xp = hero.HeroDeveloper.TotalXp;
-            return String.Join("\n",
-                    $"Character total xp: {xp}, total skill xp: {skillXp}",
-                    $"Character heath points {hero.HitPoints}/{hero.MaxHitPoints}"
-            );
-        }
-
-        [CommandLineFunctionality.CommandLineArgumentFunction("hero", "respec")]
-        public static string rh(List<string> args) => CommandWrapper(RespecHero)(args);
-        public static string RespecHero(List<string> arguments)
-        {
-            var hero = GetHeroFromCommandLineArguments(arguments, 0);
-            return Respec.RespecHero(hero);
-        }
         [CommandLineFunctionality.CommandLineArgumentFunction("attribute", "respec")]
         public static string ra(List<string> args) => CommandWrapper(RespecAttribute, 1)(args);
         public static string RespecAttribute(List<string> arguments)
@@ -81,7 +48,7 @@ namespace MBRespec {
             return Respec.RespecAllAttributes(hero);
         }
 
-        [CommandLineFunctionality.CommandLineArgumentFunction("focus_point", "respec")]
+        [CommandLineFunctionality.CommandLineArgumentFunction("focus", "respec")]
         public static string rfp(List<string> args) => CommandWrapper(RespecFocusPoint, 1)(args);
         public static string RespecFocusPoint(List<string> arguments)
         {
@@ -90,12 +57,47 @@ namespace MBRespec {
             return Respec.RespecFocusPoint(hero, skill);
         }
 
-        [CommandLineFunctionality.CommandLineArgumentFunction("all_focus_points", "respec")]
+        [CommandLineFunctionality.CommandLineArgumentFunction("all_focuses", "respec")]
         public static string rafp(List<string> args) => CommandWrapper(RespecAllFocusPoints)(args);
         public static string RespecAllFocusPoints(List<string> arguments)
         {
             Hero hero = GetHeroFromCommandLineArguments(arguments, 0);
             return Respec.RespecAllFocusPoints(hero);
+        }
+
+        [CommandLineFunctionality.CommandLineArgumentFunction("hero", "respec")]
+        public static string rh(List<string> args) => CommandWrapper(RespecHero)(args);
+        public static string RespecHero(List<string> arguments)
+        {
+            var hero = GetHeroFromCommandLineArguments(arguments, 0);
+            return Respec.RespecHero(hero);
+        }
+
+#if DEBUG
+        [CommandLineFunctionality.CommandLineArgumentFunction("show_xp", "respec")]
+        public static string _xp(List<string> args) => CommandWrapper(Xp)(args);
+        public static string Xp(List<string> arguments)
+        {
+            Hero hero = GetHeroFromCommandLineArguments(arguments, 0);
+
+            var heroD = hero.HeroDeveloper as PropertyOwnerF<PropertyObject>;
+            var skillXp = Skills.All.Sum(skill => heroD.GetPropertyValue(skill));
+
+            var xp = hero.HeroDeveloper.TotalXp;
+            return String.Join("\n",
+                    $"Character total xp: {xp}, total skill xp: {skillXp}",
+                    $"Character heath points {hero.HitPoints}/{hero.MaxHitPoints}"
+            );
+        }
+
+        [CommandLineFunctionality.CommandLineArgumentFunction("show_learnt_perks_for_skill", "respec")]
+        public static string slpfs(List<string> args) => CommandWrapper(ShowLearntPerksForSkill, 1)(args);
+        // public static CommandLineFunction slpfs = CommandWrapper(ShowPerksForSkill, 1);
+        public static string ShowLearntPerksForSkill(List<string> arguments)
+        {
+            var hero = GetHeroFromCommandLineArguments(arguments, 1);
+            var skill = GetSkillByName(arguments[0]);
+            return Respec.ShowLearntPerksForSkill(hero, skill);
         }
 
         [CommandLineFunctionality.CommandLineArgumentFunction("skill", "respec")]
@@ -114,7 +116,7 @@ namespace MBRespec {
             Hero hero = GetHeroFromCommandLineArguments(arguments, 0);
             return Respec.ResetAllSkills(hero);
         }
-#if DEBUG
+
         [CommandLineFunctionality.CommandLineArgumentFunction("set_skill", "respec")]
         public static string ss(List<string> args) => CommandWrapper(SetSkill, 2)(args);
         public static string SetSkill(List<string> arguments)
